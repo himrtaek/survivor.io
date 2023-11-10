@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.cysharp.memorypack": {
+      "version": "file:../LocalPackages/MemoryPack/com.cysharp.memorypack",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "7.0.9",
       "depth": 1,
