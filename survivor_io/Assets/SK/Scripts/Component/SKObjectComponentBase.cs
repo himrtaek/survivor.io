@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using JHT.Scripts.Common;
 using UnityEngine;
+using UnityEngine.Serialization;
 
+[RequireComponent(typeof(SKObjectBase))]
 public class SKObjectComponentBase : MonoBehaviour
 {
-    [SerializeField] private SKObject _skObject;
+    [SerializeField] private SKObjectBase skObject;
 
-    public SKObject SKObject
+    public SKObjectBase SKObject
     {
         get
         {
-            if (false == _skObject)
+            if (false == skObject)
             {
-                if (TryGetComponent(out _skObject).IsFalse())
+                if (TryGetComponent(out skObject).IsFalse())
                 {
                     return null;
                 }
             }
 
-            return _skObject;
+            return skObject;
         }
     }
 }

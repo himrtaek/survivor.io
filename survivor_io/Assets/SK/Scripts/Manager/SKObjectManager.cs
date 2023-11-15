@@ -2,21 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using JHT.Scripts.Common;
 using JHT.Scripts.GameObjectPool;
+using JHT.Scripts.ResourceManager;
 using UnityEngine;
 
 public class SKObjectManager
 {
-    private Dictionary<SKObject.SKObjectType, Dictionary<long, SKObject>> _skObjectByObjectType = new();
-    private List<SKObject> _skObjectListTemp = new();
-    private List<SKObject> _readyForDestroyObjectList = new();
+    public SKObjectPlayer ObjectPlayer { get; private set; }
+    
+    private Dictionary<SKObjectBase.SKObjectType, Dictionary<long, SKObjectBase>> _skObjectByObjectType = new();
+    private List<SKObjectBase> _skObjectListTemp = new();
+    private List<SKObjectBase> _readyForDestroyObjectList = new();
     private long _lastSpawnId;
 
     public void Init()
     {
-        
+        SpawnPlayer();
     }
-    
-    public SKObject SpawnObject(GameObject originalAsset)
+
+    private void SpawnPlayer()
+    {
+        var skObject = SpawnObject("Prefab/Player");
+        if (skObject.IsNull())
+        {
+            return;
+        }
+        
+        if (skObject is SKObjectPlayer objectPlayer)
+        {
+            ObjectPlayer = objectPlayer;
+        }
+    }
+
+    public SKObjectBase SpawnObject(string prefabPath)
+    {
+        var originalAsset = ResourceManager.Instance.LoadOriginalAsset<GameObject>(prefabPath);
+        if (originalAsset.IsNull())
+        {
+            return null;
+        }
+        
+        return SpawnObject(originalAsset);
+    }
+
+    public SKObjectBase SpawnObject(GameObject originalAsset)
     {
         var spawnObject = GameObjectPoolManager.Instance.GetOrNewObject(originalAsset);
         if (spawnObject.IsNull())
@@ -24,14 +52,14 @@ public class SKObjectManager
             return null;
         }
 
-        if (spawnObject.TryGetComponent(out SKObject skObject).IsFalse())
+        if (spawnObject.TryGetComponent(out SKObjectBase skObject).IsFalse())
         {
             return null;
         }
         
         skObject.SetSpawnId(++_lastSpawnId);
         
-        skObject.ChangeState(SKObject.SKObjectStateType.Spawned);
+        skObject.ChangeState(SKObjectBase.SKObjectStateType.Spawned);
         
         var spawnEventParam = SKEventParam.GetOrNewParam<SKSpawnEventParam>();
         spawnEventParam.SpawnId = _lastSpawnId;
@@ -64,7 +92,7 @@ public class SKObjectManager
         
         foreach (var skObject in _skObjectListTemp)
         {
-            skObject.ChangeState(SKObject.SKObjectStateType.Destroyed);
+            skObject.ChangeState(SKObjectBase.SKObjectStateType.Destroyed);
             skObject.Event.BroadCast(SKEvent.SKEventType.Destroy);
             skObject.gameObject.SetActive(false);
         }
@@ -72,9 +100,9 @@ public class SKObjectManager
         _skObjectListTemp.Clear();
     }
 
-    public void DestroyObject(SKObject skObject)
+    public void DestroyObject(SKObjectBase skObject)
     {
-        skObject.ChangeState(SKObject.SKObjectStateType.ReadyForDestroyed);
+        skObject.ChangeState(SKObjectBase.SKObjectStateType.ReadyForDestroyed);
         _readyForDestroyObjectList.Add(skObject);
     }
 }

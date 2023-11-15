@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using JHT.Scripts.GameObjectPool;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(PoolableObject))]
 [DisallowMultipleComponent]
-public class SKObject : MonoBehaviour
+public abstract class SKObjectBase : MonoBehaviour
 {
     public enum SKObjectType
     {
@@ -12,12 +14,12 @@ public class SKObject : MonoBehaviour
         PlayerWeapon,
         Monster,
         MonsterWeapon,
+        Spawner,
         Deco,
     }
 
-    [SerializeField] private SKObjectType _skObjectType;
-    public SKObjectType ObjectType => _skObjectType;
-    
+    public abstract SKObjectType ObjectType { get; }
+
     public enum SKObjectStateType
     {
         None,

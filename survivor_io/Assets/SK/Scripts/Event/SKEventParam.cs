@@ -49,12 +49,12 @@ public class SKSpawnEventParam : SKEventParam
 
 public class SKObjectStateChangeEventParam : SKEventParam
 {
-    public SKObject.SKObjectStateType BeforeType;
-    public SKObject.SKObjectStateType AfterType;
+    public SKObjectBase.SKObjectStateType BeforeType;
+    public SKObjectBase.SKObjectStateType AfterType;
     
     public override void Reset()
     {
-        BeforeType = SKObject.SKObjectStateType.None;
-        AfterType = SKObject.SKObjectStateType.None;
+        BeforeType = SKObjectBase.SKObjectStateType.None;
+        AfterType = SKObjectBase.SKObjectStateType.None;
     }
 }
