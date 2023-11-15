@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(SKObjectBase))]
-public class SKObjectComponentBase : MonoBehaviour
+public class SKComponentBase : MonoBehaviour
 {
     [SerializeField] private SKObjectBase skObject;
 
