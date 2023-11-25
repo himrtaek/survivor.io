@@ -49,6 +49,7 @@ public abstract class SKObjectBase : MonoBehaviour
         SpawnId = spawnId;
     }
 
+    public SKStatManager StatManager { get; } = new();
     public SKEvent Event { get; } = new();
     public UnityEvent<float> OnGameUpdate { get; } = new();
 
