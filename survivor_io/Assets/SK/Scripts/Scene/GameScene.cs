@@ -8,6 +8,7 @@ public class GameScene : MonoBehaviour
     
     public void Awake()
     {
+        DataTableManager.AddDataTableType(typeof(SupportItemDataTable));
         DataTableManager.Load();
         SKGameManager.Instance.Init(1);
         playerInput.Init(SKGameManager.Instance.ObjectManager.ObjectPlayer);

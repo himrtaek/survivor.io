@@ -25,7 +25,7 @@ public abstract class DataTableDoubleIdBase<T> : DataTableBase where T : DataRow
         return true;
     }
 
-    protected static T GetRowBase(DataTableManager.DataTableType dataTableType, uint id, uint key)
+    protected static T GetRowBase(Type dataTableType, uint id, uint key)
     {
         var dataTableBase = DataTableManager.GetDataTableBase(dataTableType);
         if (null == dataTableBase)

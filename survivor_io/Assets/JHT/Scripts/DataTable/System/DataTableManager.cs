@@ -1,23 +1,18 @@
 using System;
 using System.Collections.Generic;
 using JHT.Scripts.Common;
-using JHT.Scripts.Common.PerformanceExtension;
 using JHT.Scripts.ResourceManager;
 
 public static class DataTableManager
 {
-    public enum DataTableType
-    {
-        SupportItem
-    }
-
-    private static Dictionary<DataTableType, DataTableBase> _dataTableByType = new();
+    private static HashSet<Type> _dataTypes = new();
+    private static Dictionary<Type, DataTableBase> _dataTableByType = new();
 
     public static bool Load()
     {
-        foreach (DataTableType dataTableType in Enum.GetValues(typeof(DataTableType)))
+        foreach (Type dataTableType in _dataTypes)
         {
-            var dataTableBase = ResourceManager.Instance.LoadOriginalAsset<DataTableBase>($"DataTable/{dataTableType.ToStringCached()}DataTable");
+            var dataTableBase = ResourceManager.Instance.LoadOriginalAsset<DataTableBase>($"DataTable/{dataTableType.Name}");
             if (dataTableBase.IsNull())
             {
                 continue;
@@ -31,7 +26,12 @@ public static class DataTableManager
         return true;
     }
 
-    public static DataTableBase GetDataTableBase(DataTableType dataTableType)
+    public static void AddDataTableType(Type dataTableType)
+    {
+        _dataTypes.Add(dataTableType);
+    } 
+
+    public static DataTableBase GetDataTableBase(Type dataTableType)
     {
         if (false == _dataTableByType.TryGetValue(dataTableType, out var dataTableBase))
         {

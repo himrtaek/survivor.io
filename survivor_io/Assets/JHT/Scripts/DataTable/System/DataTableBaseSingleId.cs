@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using JHT.Scripts.Common;
 using UnityEngine;
@@ -17,7 +18,7 @@ public abstract class DataTableSingleIdBase<T> : DataTableBase where T : DataRow
         return true;
     }
     
-    protected static T GetRowBase(DataTableManager.DataTableType dataTableType, uint id)
+    protected static T GetRowBase(Type dataTableType, uint id)
     {
         var dataTableBase = DataTableManager.GetDataTableBase(dataTableType);
         if (null == dataTableBase)

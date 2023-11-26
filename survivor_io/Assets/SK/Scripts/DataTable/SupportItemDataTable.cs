@@ -6,7 +6,7 @@ public class SupportItemDataTable : DataTableDoubleIdBase<SupportItemData>
 {
     public static SupportItemData GetRow(uint id, uint key)
     {
-        return GetRowBase(DataTableManager.DataTableType.SupportItem, id, key);
+        return GetRowBase(typeof(SupportItemDataTable), id, key);
     }
 }
 
