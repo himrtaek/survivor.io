@@ -8,6 +8,11 @@ public static class DataTableManager
     private static HashSet<Type> _dataTypes = new();
     private static Dictionary<Type, DataTableBase> _dataTableByType = new();
 
+    public static void Clear()
+    {
+        _dataTableByType.Clear();
+    }
+
     public static bool Load()
     {
         foreach (Type dataTableType in _dataTypes)
