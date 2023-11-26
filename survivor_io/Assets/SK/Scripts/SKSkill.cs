@@ -6,7 +6,7 @@ public class SKSkill
 {
     public enum SKSkillType
     {
-        
+        IncreaseMaxHp
     }
 
     public SKSkillType SkillType { get; }

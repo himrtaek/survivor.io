@@ -30,6 +30,7 @@ public class SKObjectManager
         if (skObject is SKObjectPlayer objectPlayer)
         {
             ObjectPlayer = objectPlayer;
+            objectPlayer.AddSupportItemInfo(SKSupportItem.SKSupportItemType.FitnessManual, 1);
         }
     }
 
