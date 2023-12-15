@@ -60,6 +60,14 @@ public class SKObjectManager
         
         skObject.SetSpawnId(++_lastSpawnId);
         
+        if (false ==_skObjectByObjectType.TryGetValue(skObject.ObjectType, out var skObjectBySpawnId))
+        {
+            skObjectBySpawnId = new();
+            _skObjectByObjectType.Add(skObject.ObjectType, skObjectBySpawnId);
+        }
+        
+        skObjectBySpawnId.Add(skObject.SpawnId, skObject);
+        
         skObject.ChangeState(SKObjectBase.SKObjectStateType.Spawned);
         
         var spawnEventParam = SKEventParam.GetOrNewParam<SKSpawnEventParam>();
