@@ -155,7 +155,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.dt.app-ui": {
-      "version": "0.5.1",
+      "version": "1.0.0-pre.3",
       "depth": 2,
       "source": "registry",
       "dependencies": {
@@ -220,11 +220,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.muse.common": {
-      "version": "0.4.1",
+      "version": "1.0.0-pre.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.dt.app-ui": "0.5.1",
+        "com.unity.dt.app-ui": "1.0.0-pre.3",
         "com.unity.burst": "1.8.7",
         "com.unity.settings-manager": "2.0.1",
         "com.unity.modules.imageconversion": "1.0.0",
@@ -232,12 +232,22 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.muse.texture": {
-      "version": "0.4.1",
+    "com.unity.muse.sprite": {
+      "version": "1.0.0-pre.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.muse.common": "0.4.1",
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.muse.common": "1.0.0-pre.2"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.muse.texture": {
+      "version": "1.0.0-pre.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.muse.common": "1.0.0-pre.2",
         "com.unity.shadergraph": "14.0.7"
       },
       "url": "https://packages.unity.com"
