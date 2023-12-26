@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// 쉬운 사용을 위해 namespace 사용안함
 namespace JHT.Scripts.Common.PerformanceExtension
 {
     public static class StringPerformanceExtension

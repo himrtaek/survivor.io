@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf0f837ee49b9344b083c31bb8466c1, type: 3}
+  m_Name: SKMonsterSpawnSetting
+  m_EditorClassIdentifier: 
+  SpawnInfos:
+  - memo: 
+    gameObject: {fileID: 4985065082509092052, guid: 0933de0b675fdd842a6c15e5b11067f5, type: 3}
+    spawnStartSecond: 0
+    spawnEndSecond: 30
+    spawnCountPerSecond: 5
+    positionConstraint: 1
+    statList: []

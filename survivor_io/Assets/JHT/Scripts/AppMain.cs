@@ -78,6 +78,25 @@ namespace JHT.Scripts
 		
 			InitStep = InitStepType.AfterSceneLoad;
 		}
+		
+		public static bool IsPlaying { get; private set; } = true;
+		
+		public static bool IsQuit { get; private set; } = false;
+		
+		public static void OnApplicationQuit()
+		{
+			if (false == IsQuit)
+			{
+				IsPlaying = false;
+				IsQuit = true;
+				
+				Debug.Log("AppMain.OnApplicationQuit");
+			}
+			else
+			{
+				Debug.Log("AppMain.OnApplicationQuit Already Called");
+			}
+		}
 
 		private void Init()
 		{
