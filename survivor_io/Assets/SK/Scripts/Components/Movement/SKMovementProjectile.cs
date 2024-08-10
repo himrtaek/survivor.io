@@ -19,7 +19,6 @@ namespace SK
 	    [SerializeField] private float maxRotationAcceleration;
 	    
 	    private SKTargetHelper _targetHelper = new ();
-	    private float _elapsedTime;
 	    private Vector3 _prevDirection = Vector3.negativeInfinity;
 	    private float _elapsedRotationAcceleration;
 
@@ -71,7 +70,6 @@ namespace SK
 		    
 		    SkObject.StatManager.AddStatData(StatType.ProjectileSpeed, StatExprType.Add, StatSourceType.Prefab, GetInstanceID(), moveSpeed);
 		    
-		    _elapsedTime = 0;
 		    _elapsedRotationAcceleration = 0;
 		    
 		    _targetHelper.SetData(gameObject, targetType, objectUpdateType, positionUpdateType, constraintFlag);

@@ -119,7 +119,7 @@ namespace SK
 		    PlayerStatManager = ObjectManager.ObjectPlayer.StatManager;
 		    
 		    InitPlayerBaseStat();
-		    /*InitPlayerWeapon();*/
+		    InitPlayerWeapon();
 	    }
 
 	    private void InitPlayerBaseStat()

@@ -187,7 +187,6 @@ namespace SK
 
 	    public void CopyTo(SKStatInfo otherStatInfo, StatSourceType statSourceType)
 	    {
-		    var clear = false;
 		    for (int i = 0; i < (int)StatExprType.End; ++i)
 		    {
 			    var statExprType = (StatExprType)i;

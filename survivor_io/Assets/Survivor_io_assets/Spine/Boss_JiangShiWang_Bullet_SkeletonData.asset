@@ -18,7 +18,7 @@ MonoBehaviour:
   skeletonJSON: {fileID: 4900000, guid: e3864cd3336f91443bb226163bea8380, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
-    requiresBlendModeMaterials: 0
+    requiresBlendModeMaterials: 1
     applyAdditiveMaterial: 1
     additiveMaterials:
     - pageName: Boss_JiangShiWang_WorldCup.png

@@ -7,7 +7,7 @@ namespace SK
 			public const string BossRingBlock = "boss_ring_block";
 		}
 
-		public const string PlayerFilePath = "SKPlayerData/Player";
+		public const string PlayerFilePath = "Player/Player";
 		public const string ZombieFilePath = "SKMonsterData/Monster_Zombie/Monster_Zombie";
 		public const string BossRingBlockFilePath = "SKMonsterData/Common/BossRingBlock";
 		public const float BackgroundTileWidth = 10.24f;

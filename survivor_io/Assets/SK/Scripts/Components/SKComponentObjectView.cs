@@ -1,6 +1,7 @@
 ﻿using JHT.Scripts.Common.PerformanceExtension;
 using Spine.Unity;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SK
 {
@@ -16,18 +17,18 @@ namespace SK
     public class SKComponentObjectView : SKComponentBase
     {
 	    #region Cache
-
-	    [SerializeField] private Animator animator;
-	    public Animator Animator
+	    
+	    [SerializeField] private SKComponentSpriteAnimation spriteAnimation;
+	    public SKComponentSpriteAnimation SpriteAnimation
 	    {
 		    get
 		    {
-			    if (false == animator)
+			    if (false == spriteAnimation)
 			    {
-				    TryGetComponent(out animator);
+				    TryGetComponent(out spriteAnimation);
 			    }
 			    
-			    return animator;
+			    return spriteAnimation;
 		    }
 	    }
 	    
@@ -45,70 +46,18 @@ namespace SK
 		    }
 	    }
 	    
-	    [SerializeField] private SpriteRenderer spriteRenderer;
-	    public SpriteRenderer SpriteRenderer
-	    {
-		    get
-		    {
-			    if (false == spriteRenderer)
-			    {
-				    TryGetComponent(out spriteRenderer);
-			    }
-			    
-			    return spriteRenderer;
-		    }
-	    }
-
-	    protected override void Awake()
-	    {
-		    base.Awake();
-
-		    if (Animator)
-		    {
-			    foreach (var clip in Animator.runtimeAnimatorController.animationClips)
-			    {
-				    var animationStartEvent = new AnimationEvent();
-				    animationStartEvent.time = 0;
-				    animationStartEvent.functionName = nameof(AnimationStartHandler);
-				    animationStartEvent.stringParameter = clip.name;
-            
-				    var animationEndEvent = new AnimationEvent();
-				    animationEndEvent.time = clip.length;
-				    animationEndEvent.functionName = nameof(AnimationCompleteHandler);
-				    animationEndEvent.stringParameter = clip.name;
-            
-				    clip.AddEvent(animationStartEvent);
-				    clip.AddEvent(animationEndEvent);
-			    }
-		    }
-	    }
-	    
-	    public void AnimationStartHandler(string name)
-	    {
-		    
-	    }
-	    public void AnimationCompleteHandler(string name)
-	    {
-		    
-	    }
-	    
 	    protected override void Reset()
 	    {
 		    base.Reset();
 		    
-		    if(false == animator)
+		    if(false == spriteAnimation)
 		    {
-			    TryGetComponent(out animator);
+			    TryGetComponent(out spriteAnimation);
 		    }
 		    
 		    if(false == skeletonAnimation)
 		    {
 			    TryGetComponent(out skeletonAnimation);
-		    }
-		    
-		    if(false == spriteRenderer)
-		    {
-			    TryGetComponent(out spriteRenderer);
 		    }
 	    }
 
@@ -164,11 +113,11 @@ namespace SK
 			    newFlipX = !newFlipX;
 		    }
 
-		    if (SpriteRenderer)
+		    if (SpriteAnimation)
 		    {
-			    if (SpriteRenderer.flipX != newFlipX)
+			    if (SpriteAnimation.spriteRenderer.flipX != newFlipX)
 			    {
-				    SpriteRenderer.flipX = newFlipX;
+				    SpriteAnimation.spriteRenderer.flipX = newFlipX;
 			    }
 		    }
 		    else if (SkeletonAnimation)
@@ -201,14 +150,14 @@ namespace SK
 
 	    private void OnPause(bool pause)
 	    {
-		    if (Animator)
-		    {
-			    Animator.speed = pause ? 0f : 1f;
-		    }
-
 		    if (SkeletonAnimation)
 		    {
 			    SkeletonAnimation.timeScale = pause ? 0f : 1f;
+		    }
+
+		    if (SpriteAnimation)
+		    {
+			    SpriteAnimation.timeScale = pause ? 0f : 1f;
 		    }
 	    }
 
@@ -217,6 +166,11 @@ namespace SK
 		    if (SkeletonAnimation)
 		    {
 			    SkeletonAnimation.loop = loop;
+		    }
+
+		    if (SpriteAnimation)
+		    {
+			    SpriteAnimation.loop = loop;
 		    }
 	    }
 
@@ -243,11 +197,9 @@ namespace SK
 			    return trackEntry.AnimationEnd;
 		    }
 
-		    if (Animator)
+		    if (SpriteAnimation)
 		    {
-			    Animator.Play(animName);
-			    Animator.Update(0);
-			    return GetCurrentAnimationClipLength(animator);
+			    return spriteAnimation.PlayAnim(animName);
 		    }
 
 		    return 0;
@@ -262,35 +214,12 @@ namespace SK
 			    return trackEntry.AnimationEnd;
 		    }
 
-		    if (Animator)
+		    if (SpriteAnimation)
 		    {
-			    Animator.Play(animName);
-			    Animator.Update(0);
-			    return GetCurrentAnimationClipLength(animator);
+			    return spriteAnimation.PlayAnim(animName, nextAnimName);
 		    }
 
 		    return 0;
-	    }
-	    
-	    public static float GetCurrentAnimationClipLength(Animator animator, int iLayerIndex = 0)
-	    {
-		    var list = animator.GetCurrentAnimatorClipInfo(iLayerIndex);
-		    if (null == list)
-		    {
-			    return 0;
-		    }
-
-		    if (0 == list.Length)
-		    {
-			    return 0;
-		    }
-
-		    if (null == list[0].clip)
-		    {
-			    return 0;
-		    }
-
-		    return list[0].clip.length;
 	    }
     }
 }

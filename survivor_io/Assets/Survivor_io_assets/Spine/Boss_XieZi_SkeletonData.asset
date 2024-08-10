@@ -18,7 +18,7 @@ MonoBehaviour:
   skeletonJSON: {fileID: 4900000, guid: 68c3b46000827cf4f827cbd3074fb997, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
-    requiresBlendModeMaterials: 0
+    requiresBlendModeMaterials: 1
     applyAdditiveMaterial: 1
     additiveMaterials: []
     multiplyMaterials: []

@@ -96,12 +96,12 @@ namespace SK
 		[LabelText("데이터 오버라이드 정보")] public SKMonsterSpawnOverrideInfo overrideInfo;
 	}
 	
-	[CreateAssetMenu(fileName = "SKMonsterSpawnSetting", menuName = "ScriptableObject/SKMonsterSpawnSetting")]
+	[CreateAssetMenu(fileName = "MonsterSpawnSetting", menuName = "ScriptableObject/MonsterSpawnSetting")]
 	public class SKMonsterSpawnSetting : ScriptableObject
 	{
 		public static string GetFilePathByStageId(uint stageId)
 		{
-			return ZString.Concat("SKStageData_", stageId.ToStringCached(), "/SKMonsterSpawnSetting");
+			return ZString.Concat("DataTables/StageData_", stageId.ToStringCached(), "/MonsterSpawnSetting");
 		}
 		
 		public List<SKMonsterSpawnInfo> SpawnInfos = new();

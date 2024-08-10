@@ -18,7 +18,7 @@ MonoBehaviour:
   skeletonJSON: {fileID: 4900000, guid: 720b9b12d3118fb4ab77d3cdcfd5dce4, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
-    requiresBlendModeMaterials: 0
+    requiresBlendModeMaterials: 1
     applyAdditiveMaterial: 1
     additiveMaterials:
     - pageName: BaoXiang.png

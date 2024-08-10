@@ -62,7 +62,7 @@ namespace SK
 			    RemoveWeapon(weaponId);
 		    }
 		    
-		    var weaponPrefabPath = ZString.Concat("SKWeaponData_", weaponId, "/Weapon_", weaponId, "_", level);
+		    var weaponPrefabPath = ZString.Concat("Player/Weapons/", weaponId, "/Weapon_", weaponId, "_", level);
 		    var weaponSkObject = SKGameManager.Instance.ObjectManager.SpawnObject(weaponPrefabPath, this, true);
 		    if (weaponSkObject)
 		    {

@@ -138,7 +138,7 @@ namespace SK
 
 	    private string GetTilePrefabPath(uint stageId)
 	    {
-		    return ZString.Concat("SKMapData/", _backgroundType.ToStringCached(), "Tile");
+		    return ZString.Concat("Maps/", _backgroundType.ToStringCached(), "Tile");
 	    }
 
 	    public void GameLateUpdate(float deltaTime)

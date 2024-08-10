@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3760746230326343339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4791790410900384195}
+  - component: {fileID: -4123051200495260058}
+  - component: {fileID: 2755473398376906451}
+  - component: {fileID: -3124891670591925685}
+  m_Layer: 12
+  m_Name: Weapon_1_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4791790410900384195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760746230326343339}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4123051200495260058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760746230326343339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ade11aaccd6594aa264f1dce53925c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skObject: {fileID: -3124891670591925685}
+  manualInit: 0
+  destroyOnAllSpawn: 0
+  destroyAllSpawnObjectOnRepeat: 0
+  destroyAllSpawnObjectOnDestroy: 0
+  spawnInfoList:
+  - gameObject: {fileID: 3760746230326343339, guid: f2632833ebb43cd42ad97401b4db7d17, type: 3}
+    isChild: 0
+    isLocalPosition: 0
+    position: {x: 0, y: 0}
+    addParentPosition: 1
+    isLocalRotation: 0
+    rotationZ: 0
+    addParentRotation: 0
+    scale: {x: 1, y: 1, z: 1}
+    spawnCount: 1
+    spawnStartDelay: 0
+    spawnDuration: 1
+    spawnRepeat: 1
+    spawnRepeatCoolTime: 1
+    affectWeaponRange: 0
+--- !u!114 &2755473398376906451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760746230326343339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4b87f8676c185478a6904d1883ca9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3124891670591925685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760746230326343339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c41c8e2f4f081d4f9a7e462fd86279e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolableObject: {fileID: 2755473398376906451}
+  objectTagList: []
+  statOverrideType: 0
+  dataObjectName: 
+  dataID: 0
+  playerWeaponSpawner: {fileID: -4123051200495260058}
+  level: 0

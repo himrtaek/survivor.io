@@ -4,10 +4,10 @@ using UnityEngine;
 namespace SK
 {
 	
-	[CreateAssetMenu(fileName = "SKPlayerBaseStatSetting", menuName = "ScriptableObject/SKPlayerBaseStatSetting")]
+	[CreateAssetMenu(fileName = "PlayerBaseStatSetting", menuName = "ScriptableObject/PlayerBaseStatSetting")]
 	public class SKPlayerBaseStatSetting : ScriptableObject
 	{
-		public const string FilePath = "SKPlayerData/SKPlayerBaseStatSetting";
+		public const string FilePath = "Player/PlayerBaseStatSetting";
 		public List<SKStatSerializeData> statDataList = new();
 	}
 }
